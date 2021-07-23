@@ -6,7 +6,7 @@ RUN apk update && \
 RUN apk add --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing roswell
 
 ADD ./Makefile ./
-RUN make install
+RUN make setup
 RUN rm ./Makefile
 
 WORKDIR /home

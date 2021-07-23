@@ -1,7 +1,7 @@
 IMAGE_NAME := roswell
 
-install:
-	ros install
+setup:
+	ros setup
 
 docker.build:
 	docker build -t $(IMAGE_NAME) .
@@ -17,3 +17,4 @@ docker.run.test:
 
 docker.shell:
 	docker run -it --rm $(IMAGE_NAME) zsh
+
