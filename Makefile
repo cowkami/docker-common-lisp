@@ -4,7 +4,7 @@ docker.build:
 	docker build -t $(IMAGE_NAME) .
 
 docker.run:
-	docker run -it --rm $(IMAGE_NAME)
+	docker run -it --rm -v $(PWD):/home $(IMAGE_NAME)
 
 docker.run.main:
 	docker run --rm -v $(PWD):/home $(IMAGE_NAME) ros ./src/main.lisp
