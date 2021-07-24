@@ -1,8 +1,5 @@
 IMAGE_NAME := roswell
 
-setup:
-	ros setup
-
 docker.build:
 	docker build -t $(IMAGE_NAME) .
 

@@ -1,13 +1,15 @@
-FROM alpine:3.14.0
+FROM debian:bullseye
 
-RUN apk update && \
-  apk upgrade && \
-  apk add zsh make
-RUN apk add --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing roswell
+RUN apt-get update \
+  && apt-get -y install git build-essential automake libcurl4-openssl-dev
 
-ADD ./Makefile ./
-RUN make setup
-RUN rm ./Makefile
+RUN git clone -b release https://github.com/roswell/roswell.git \
+  && cd roswell \
+  && sh bootstrap \
+  && ./configure \
+  && make \
+  && make install \
+  && ros setup
 
 WORKDIR /home
 
